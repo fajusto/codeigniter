@@ -28,7 +28,7 @@
 		<input class="formRow form-control form-control" type="date" name="birthday" placeholder="Birthday" maxlength="10" value="<?php echo $customer_data->birthday; ?>"/><br>
 		<input name="Is_active" type="checkbox" value="1" <?php echo ($customer_data->Is_active == 1) ? 'checked="checked"' : '' ?>>Is active!<br>
 		<input id="submitBtn" class="btn btn-primary btn-block" type="submit" value="Submit">
-		<input name="id" type="hidden" value="<?php //echo $usuario['id'] ?>">
+		<input name="id" type="hidden" value="<?php echo $customer_data->id; ?>">
 </form>
 </body>
 </html>

@@ -48,5 +48,10 @@ class Customer_model extends CI_Model {
 
         return $this->db->where('id', $id)->update('usuarios', $this);
 	}
+
+	public function deleteCustomer($id) {
+
+        return $this->db->where('id', $id)->delete('usuarios', $this);
+	}
 }
 

@@ -34,7 +34,7 @@ class Customer extends CI_Controller {
 			echo 'Não Registrou!! Vamos encontrar o problema.';
 		}
 	}
-	
+
 	public function __construct()
 	    {
 	        parent::__construct();
@@ -58,6 +58,19 @@ class Customer extends CI_Controller {
 			redirect(base_url(), 'refresh');
 		} else {
 			echo 'Não Atualizou!! Vamos encontrar o problema.';
+		}
+	}
+
+	public function delete($id) {
+
+		$data = array(
+			'customer_data' => $this->customer_model->deleteCustomer($id)
+			);
+
+		if($this->customer_model->deleteCustomer()) {
+			redirect(base_url(), 'refresh');
+		} else {
+			echo 'Não deletou!! Vamos encontrar o problema.';
 		}
 	}
 }

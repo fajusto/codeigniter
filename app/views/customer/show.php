@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</td>
 				<td>
 					  <a href="<?= base_url('customer/edit/' . $cust->id); ?>">Edit<a>
-					<a href="delete.php?id=<?php //echo $row['id'] ?>">Delete<a>
+					<a href="<?= base_url('customer/delete/' . $cust->id); ?>">Delete<a>
 				</td>
 			</tr>
 			<?php endforeach; ?>
