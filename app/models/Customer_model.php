@@ -35,5 +35,18 @@ class Customer_model extends CI_Model {
 	public function getCustomer($id) {
 		return $this->db->where('id =', $id)->get('usuarios')->row();
 	}
+
+	public function updateCustomer() {
+
+        $this->firstName = $_POST['firstName'];
+        $this->lastName  = $_POST['lastName'];
+        $this->email  	 = $_POST['email'];
+        $this->cpf  	 = $_POST['cpf'];
+        $this->birthday  = $_POST['birthday'];
+        $this->Is_active = (isset($_POST['Is_active'])) ? '1' : '0';
+        $id 			 = $_POST['id'];
+
+        return $this->db->where('id', $id)->update('usuarios', $this);
+	}
 }
 

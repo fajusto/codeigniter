@@ -34,6 +34,7 @@ class Customer extends CI_Controller {
 			echo 'Não Registrou!! Vamos encontrar o problema.';
 		}
 	}
+	
 	public function __construct()
 	    {
 	        parent::__construct();
@@ -41,14 +42,23 @@ class Customer extends CI_Controller {
 	        $this->load->model('customer_model');
 	        $this->load->helper('url');
 		}
+
 	public function edit($id) {
 		//echo 'ID: ' . $id;
 		$data = array(
 			'customer_data' => $this->customer_model->getCustomer($id)
 			);
-		echo '<pre>';
 
 		$this->load->view('customer/edit', $data);	
+	}
+
+	public function update() {
+
+		if($this->customer_model->updateCustomer()) {
+			redirect(base_url(), 'refresh');
+		} else {
+			echo 'Não Atualizou!! Vamos encontrar o problema.';
+		}
 	}
 }
 
