@@ -20,11 +20,35 @@ class Customer extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->helper('url');
-		$this->load->view('customer/show');
+		$data = array(
+					'customers_array' => $this->customer_model->getCustomers()
+					);
+		$this->load->view('customer/show', $data);
 	}
 	public function store () 
 	{
-		
+		if($this->customer_model->postCustomer()) {
+				// echo 'Registrou!! Agora precisamos redirecionar para a página inicial.';
+			redirect(base_url(), 'refresh');
+		} else {
+			echo 'Não Registrou!! Vamos encontrar o problema.';
+		}
+	}
+	public function __construct()
+	    {
+	        parent::__construct();
+
+	        $this->load->model('customer_model');
+	        $this->load->helper('url');
+		}
+	public function edit($id) {
+		//echo 'ID: ' . $id;
+		$data = array(
+			'customer_data' => $this->customer_model->getCustomer($id)
+			);
+		echo '<pre>';
+
+		$this->load->view('customer/edit', $data);	
 	}
 }
+

@@ -54,5 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['customer/store'] = 'customer/store';
+$route['customer/edit/(:num)'] = 'customer/edit/$1';
 
 

@@ -51,45 +51,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<th>Action</th>
 			</tr>
 
-				<?php
-					// include_once('inc/conexao.php');
-					// $sql = "SELECT id, firstName, lastName, email, cpf, birthday, Is_active FROM usuarios";
-					// $result = $conn->query($sql);
-
-					// if ($result->num_rows > 0) {
-					    // echo "<table>";
-					    // while($row = $result->fetch_assoc()) {
-				?>
+			<?php foreach($customers_array as $cust): ?>
 			<tr>
-				<td><?php //echo $row["firstName"] ?></td>
-				<td><?php //echo $row["lastName"] ?></td>
-				<td><?php //echo $row["email"] ?></td>
-				<td><?php //echo $row["cpf"] ?></td>
-				<td><?php //echo $row["birthday"] ?></td>
+				<td><?php echo $cust->firstName; ?></td>
+				<td><?php echo $cust->lastName; ?></td>
+				<td><?php echo $cust->email; ?></td>
+				<td><?php echo $cust->cpf; ?></td>
+				<td><?php echo $cust->birthday; ?></td>
 			<td>
 				<?php
-								//if ($row["Is_active"] == "1") {
-					    //echo "Sim";
-					//} else {
-					   // echo "Não";
-					//}
+					if ($cust->Is_active == "1") {
+					    echo "Sim";
+					} else {
+					    echo "Não";
+					}
 				?>
 			</td>
 				<td>
-					  <a href="edit.php?id=<?php //echo $row['id'] ?>">Edit<a>
+					  <a href="<?= base_url('customer/edit/' . $cust->id); ?>">Edit<a>
 					<a href="delete.php?id=<?php //echo $row['id'] ?>">Delete<a>
 				</td>
-		</tr>
-			<?php	        
-				        // echo "<tr><td>".$row["firstName"]."</td><td>".$row["lastName"]."</td><td>".$row["email"]."</td><td>".$row["cpf"]."</td><td>".$row["birthday"]."</td><td>".$row["Is_active"]."</td></tr>";
-				    // }
-				    // echo "</table>";
-				// } else {
-				//     echo "0 results";
-				// }
-				// $conn->close();
-			?>
+			</tr>
+			<?php endforeach; ?>
 
-			</table>
+		</table>
 </body>
 </html>
